@@ -1,1 +1,19 @@
-This file was created by IntelliJ IDEA 12.1.7 for binding GitHub repository
+README
+======
+
+Get all user informations available in firefox user files.
+The script will read all files available in profiles directory and print on screen.
+
+Build and Run
+-------------
+
+1. Change profile directory
+
+You have to put manually the path of profile directory MOZILLA_DIR.
+Be careful, it's the path that contains all profile directory and not only one profile directory !!!.
+For example, on Windows, it is :
+def MOZILLA_DIR = "C:\\Users\\USER\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles"
+
+2. gradle clean
+3. gradle uberjar
+4. java -jar GFirefoxData.jar

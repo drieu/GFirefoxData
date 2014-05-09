@@ -1,0 +1,24 @@
+apply plugin: 'groovy'
+apply plugin: 'application'
+
+// This is the class that starts your application
+mainClassName = 'Data'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    groovy 'org.codehaus.groovy:groovy-all:2.0.0'
+    compile 'org.codehaus.gpars:gpars:0.12'
+    compile 'org.xerial:sqlite-jdbc:3.7.2'
+}
+
+task uberjar(type: Jar,dependsOn:[':compileJava',':compileGroovy']) {
+    from files(sourceSets.main.output.classesDir)
+    from configurations.runtime.asFileTree.files.collect { zipTree(it) }
+
+    manifest {
+        attributes 'Main-Class': mainClassName
+    }
+}
